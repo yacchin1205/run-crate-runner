@@ -40,7 +40,7 @@ def main():
         if 'RUN_CRATE_METADATA' in os.environ:
             default_crate = os.environ['RUN_CRATE_METADATA']
         default_crate = os.path.expanduser(default_crate)
-        id = uuid4()
+        id = os.environ['RUN_CRATE_ID'] if 'RUN_CRATE_ID' in os.environ else uuid4()
         start_time = datetime.datetime.now()
         output_notebook = os.path.join(work_dir, f"output-{id}.ipynb")
         input_as_crate = os.path.splitext(args.notebook_or_crate)[1].lower() != ".ipynb"
