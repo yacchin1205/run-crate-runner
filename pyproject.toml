@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "run_crate"
+authors = [
+    {name = "RCOSDP"},
+]
+description = "Run Crate Runner"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "BSD-3-Clause"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "papermill",
+]
+dynamic = ["version"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.dynamic]
+version = {attr = "run_crate.version"}
+
+[tool.setuptools_scm]
+write_to = "src/run_crate/_version.py"
+version_scheme = "python-simplified-semver"
+local_scheme = "no-local-version"
+
+[project.scripts]
+run-crate = "run_crate.cli:main"
